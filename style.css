@@ -1,0 +1,633 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f9f9f9;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.quiz-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #1a1a1a;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: #f0f0f0;
+    transition: background 0.2s ease;
+}
+
+.back-link:hover {
+    background: #e5e5e5;
+}
+
+.quiz-title {
+    font-weight: 700;
+    color: #1a1a1a;
+    font-size: 0.95rem;
+}
+
+/* Landing Page Styles */
+.landing-page {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.landing-content {
+    text-align: center;
+    padding: 40px 30px;
+    max-width: 500px;
+}
+
+.landing-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.landing-description {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 40px;
+    line-height: 1.7;
+}
+
+.start-button {
+    background: #1a1a1a;
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 18px 48px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Inter', sans-serif;
+}
+
+.start-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    background: #2a2a2a;
+}
+
+.start-button:active {
+    transform: translateY(0);
+}
+
+/* Quiz Section (hidden initially) */
+.quiz-section {
+    display: none;
+    width: 100%;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.quiz-section.show {
+    display: block;
+}
+
+/* Progress Indicator */
+.progress-container {
+    margin-bottom: 24px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: #e5e5e5;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #1a1a1a;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+    width: 5%;
+}
+
+.progress-text {
+    text-align: center;
+    color: #666;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Quiz Container */
+.quiz-container {
+    position: relative;
+    min-height: 400px;
+    perspective: 1000px;
+}
+
+/* Question Card - Vertical Stacking Flashcard Animation */
+.question-card {
+    position: absolute;
+    width: 100%;
+    background: white;
+    border-radius: 16px;
+    padding: 40px 30px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    opacity: 0;
+    /* Initial state: card starts from behind, slightly below and scaled down */
+    transform: translateY(30px) scale(0.96);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+    pointer-events: none;
+    transform-origin: center center;
+    /* Start with subtle shadow (card is behind) */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Active card: fully visible on top of stack */
+.question-card.active {
+    opacity: 1;
+    /* Card moves up to center position with full scale */
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+    /* Enhanced shadow when on top to emphasize stacking depth */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Slide-out animation: card moves downward and fades underneath */
+.question-card.slide-out {
+    /* Card moves down slightly and scales down, gradually fading as it goes under */
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+    pointer-events: none;
+    /* Shadow fades and reduces as card goes underneath */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.question-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #1a1a1a;
+    line-height: 1.4;
+}
+
+/* Emoji Options - Modern Touch-Friendly Design */
+.emoji-options {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.emoji-option {
+    flex: 1;
+    min-width: 90px;
+    background: #f9f9f9;
+    border: 2px solid #e5e5e5;
+    border-radius: 16px;
+    padding: 28px 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.emoji-option:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border-color: #1a1a1a;
+    background: white;
+}
+
+.emoji-option:active {
+    transform: translateY(-2px) scale(1.01);
+}
+
+.emoji-option .emoji {
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+.emoji-option .emoji-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #666;
+}
+
+/* Result Container */
+.result-container {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.result-container.show {
+    display: block;
+}
+
+.result-card {
+    background: white;
+    border-radius: 16px;
+    padding: 50px 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    text-align: center;
+}
+
+.result-header {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #1a1a1a;
+}
+
+.stress-percentage {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: #1a1a1a;
+}
+
+.stress-message {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    border-left: 4px solid #1a1a1a;
+}
+
+.stress-message strong {
+    display: block;
+    font-size: 1.15em;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+/* Emoji Breakdown Section */
+.emoji-breakdown {
+    margin: 30px 0;
+    padding-top: 30px;
+    border-top: 2px solid #e5e5e5;
+}
+
+.emoji-breakdown h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.breakdown-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.breakdown-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    margin-bottom: 0;
+}
+
+.breakdown-item:hover {
+    background: #f0f0f0;
+    transform: translateX(3px);
+}
+
+.breakdown-emoji-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 140px;
+}
+
+.breakdown-emoji {
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+.breakdown-label {
+    font-size: 0.95rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.breakdown-bar-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.breakdown-bar-background {
+    flex: 1;
+    height: 24px;
+    background: #e5e5e5;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.breakdown-bar-fill {
+    height: 100%;
+    border-radius: 12px;
+    transition: width 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    min-width: 0;
+}
+
+.breakdown-percentage {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    min-width: 45px;
+    text-align: right;
+}
+
+/* Personalized Suggestions Section */
+.suggestions-container {
+    margin: 30px 0;
+    padding-top: 30px;
+    border-top: 2px solid #e5e5e5;
+    text-align: left;
+}
+
+.suggestions-container h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+}
+
+.suggestions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.suggestions-list li {
+    padding: 12px 0;
+    padding-left: 28px;
+    position: relative;
+    color: #555;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.suggestions-list li::before {
+    content: "•";
+    position: absolute;
+    left: 8px;
+    color: #1a1a1a;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.retry-button {
+    background: #1a1a1a;
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 15px 40px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    animation: fadeInButton 0.6s ease-out 0.3s forwards;
+    font-family: 'Inter', sans-serif;
+}
+
+.retry-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    background: #2a2a2a;
+}
+
+.retry-button:active {
+    transform: translateY(0);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInButton {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .landing-title {
+        font-size: 1.75rem;
+    }
+
+    .landing-description {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+
+    .start-button {
+        padding: 16px 40px;
+        font-size: 1rem;
+    }
+
+    .question-card {
+        padding: 30px 20px;
+    }
+
+    .question-text {
+        font-size: 1.25rem;
+        margin-bottom: 30px;
+    }
+
+    .emoji-options {
+        gap: 10px;
+    }
+
+    .emoji-option {
+        min-width: 80px;
+        padding: 24px 12px;
+    }
+
+    .emoji-option .emoji {
+        font-size: 2rem;
+    }
+
+    .emoji-option .emoji-label {
+        font-size: 0.8rem;
+    }
+
+    .breakdown-item {
+        padding: 12px;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .breakdown-emoji-label {
+        min-width: 120px;
+        gap: 10px;
+    }
+
+    .breakdown-emoji {
+        font-size: 1.5rem;
+    }
+
+    .breakdown-label {
+        font-size: 0.85rem;
+    }
+
+    .breakdown-bar-background {
+        height: 20px;
+    }
+
+    .breakdown-percentage {
+        font-size: 0.95rem;
+        min-width: 40px;
+    }
+
+    .stress-percentage {
+        font-size: 3rem;
+    }
+
+    .stress-message {
+        font-size: 1rem;
+        padding: 18px;
+    }
+
+    .result-card {
+        padding: 40px 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 16px;
+    }
+
+    .landing-title {
+        font-size: 1.5rem;
+    }
+
+    .landing-description {
+        font-size: 0.95rem;
+    }
+
+    .question-text {
+        font-size: 1.1rem;
+    }
+
+    .emoji-options {
+        gap: 8px;
+    }
+
+    .emoji-option {
+        min-width: 70px;
+        padding: 20px 10px;
+    }
+
+    .emoji-option .emoji {
+        font-size: 1.8rem;
+    }
+
+    .emoji-option .emoji-label {
+        font-size: 0.75rem;
+    }
+
+    .emoji-breakdown h3 {
+        font-size: 1.1rem;
+    }
+
+    .breakdown-item {
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .breakdown-emoji-label {
+        min-width: 100px;
+        gap: 8px;
+    }
+
+    .breakdown-emoji {
+        font-size: 1.3rem;
+    }
+
+    .breakdown-label {
+        font-size: 0.8rem;
+    }
+
+    .breakdown-bar-background {
+        height: 18px;
+    }
+
+    .breakdown-percentage {
+        font-size: 0.9rem;
+        min-width: 35px;
+    }
+
+    .stress-message {
+        font-size: 0.95rem;
+        padding: 15px;
+    }
+
+    .result-card {
+        padding: 30px 20px;
+    }
+}
