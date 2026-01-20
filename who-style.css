@@ -14,6 +14,14 @@ body {
     padding: 20px;
     color: #333;
     line-height: 1.6;
+    background: url(image/BgGif.gif);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* font-family: "Times New Roman", Times, serif;
+    font-family: 'Montserrat', sans-serif; */
+
 }
 
 .container {
@@ -35,29 +43,32 @@ body {
     padding: 40px 30px;
     max-width: 520px;
     background: #ffffff;
-    border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 12px;
 }
 
 .landing-title {
-    font-size: 2rem;
+    font-size: 40px;
     font-weight: 700;
     color: #1a1a1a;
     margin-bottom: 26px;
     line-height: 1.3;
+    text-align: center;
 }
 
 .button-stack {
     display: flex;
     flex-direction: column;
     gap: 14px;
+    flex-wrap: wrap;
 }
 
 .start-button {
     background: #1a1a1a;
     color: white;
     border: none;
-    border-radius: 16px;
+    border-radius: 12px;
     padding: 16px 22px;
     font-size: 1.05rem;
     font-weight: 600;
@@ -65,6 +76,25 @@ body {
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     font-family: 'Inter', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 56px;
+    flex: 1;
+    min-width: 140px;
+}
+
+.btn-icon {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 auto;
+    filter: brightness(0) invert(1);
+}
+
+.btn-label {
+    display: inline-block;
+    line-height: 1.1;
 }
 
 .start-button:hover {
@@ -79,10 +109,12 @@ body {
 
 .back-home {
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 60px;
     color: #1a1a1a;
     text-decoration: none;
     font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+
 }
 
 .back-home:hover {
@@ -96,5 +128,74 @@ body {
 
     .landing-title {
         font-size: 1.6rem;
+    }
+
+    .button-stack {
+        flex-direction: column;
+    }
+}
+
+@keyframes who-fade-up {
+    0% {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes who-card-in {
+    0% {
+        opacity: 0;
+        transform: translateY(18px) scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.landing-content {
+    animation: who-card-in 700ms ease-out both;
+}
+
+.landing-title {
+    animation: who-fade-up 800ms ease-out both;
+    animation-delay: 80ms;
+    will-change: transform, opacity;
+}
+
+.button-stack .start-button {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: who-fade-up 650ms ease-out both;
+    will-change: transform, opacity;
+}
+
+.button-stack .start-button:nth-child(1) {
+    animation-delay: 160ms;
+}
+
+.button-stack .start-button:nth-child(2) {
+    animation-delay: 240ms;
+}
+
+.button-stack .start-button:nth-child(3) {
+    animation-delay: 320ms;
+}
+
+.start-button:hover .btn-icon {
+    transform: translateY(-1px) scale(1.06);
+    transition: transform 0.25s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
     }
 }

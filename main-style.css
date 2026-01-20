@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -28,15 +30,28 @@ body {
     padding: 16px 24px;
 }
 
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+.LogoName{
+    font-size: 22px;
+    font-family: "Times New Roman", Times, serif;
+    margin-left: 18px;
+
 }
 
 .logo {
-    height: 40px;
+    height: 94px;
     width: auto;
+    margin: 0 auto;
+    margin-top: 28px;
+    margin-bottom: 0px;
+    display: block;       /* This allows margin: auto to work */
+    width: fit-content;   /* Keeps the button from stretching full-width */
+}
+
+.navbar{
+    justify-content: center; 
+    padding: 0;
+    margin-right: 22px;
+    text-align: center;
 }
 
 .navbar ul {
@@ -57,7 +72,7 @@ body {
 }
 
 .navbar a:hover {
-    background: #ececec;
+    background: #b6b6b6;
 }
 
 .container {
@@ -70,28 +85,22 @@ body {
     padding: 40px 0 10px;
 }
 
-.landing-content {
-    display: grid;
-    gap: 16px;
-    text-align: left;
-    background: #ffffff;
-    border-radius: 18px;
-    padding: 44px 34px;
-    box-shadow: 0 4px 22px rgba(0, 0, 0, 0.08);
-}
-
 .landing-title {
-    font-size: clamp(1.8rem, 3vw, 2.4rem);
-    font-weight: 800;
+    font-size: 120px;
+    font-family: "Times New Roman", Times, serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.449);
+    text-align: center;
 }
 
 .landing-description {
     color: #555;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.05rem;
+    text-align: center;
 }
 
 .start-button {
-    background: #1a1a1a;
+    background: linear-gradient(90deg, #000000 ,#1e1e1e, #454545);
     color: white;
     border: none;
     border-radius: 16px;
@@ -100,8 +109,15 @@ body {
     font-weight: 700;
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.629);
     width: fit-content;
+    /* Centering logic */
+    display: block;       /* This allows margin: auto to work */
+    width: fit-content;   /* Keeps the button from stretching full-width */
+    margin: 0 auto;       /* Pushes it to the center of the page */
+    
+    /* Optional: If it's an <a> tag, add this to remove the underline */
+    text-decoration: none;
 }
 
 .start-button:hover {
@@ -111,28 +127,76 @@ body {
 }
 
 .content-section {
-    margin-top: 40px;
-    background: #ffffff;
-    border-radius: 18px;
+    margin-top: 120px;
+    background: linear-gradient(180deg,  #ffffff, #1e1e1e53);
+    padding: 100px 80px;
     padding: 36px 30px;
-    box-shadow: 0 4px 22px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 22px rgba(251, 251, 251, 0.06);
+    /* Create the split layout */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.section-title, .sectionTitle {
+    color: #050505;
+    font-weight: 800;
+    margin-top: 0;
+    
+    /* Line spacing and Letter spacing */
+    line-height: 0.9;      /* Tight vertical spacing */
+    letter-spacing: -3px;  /* Tight horizontal spacing */
 }
 
 .section-title {
-    font-size: 1.7rem;
-    font-weight: 800;
-    margin-bottom: 18px;
+    font-size: 48px;
 }
 
-.subsection-title {
-    margin-top: 18px;
-    font-size: 1.15rem;
-    font-weight: 800;
+.sectionTitle {
+    font-size: 78px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+/* Container for the right-side content */
+.about-content {
+    margin-top: 30px;
+    text-align: justify;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.section-Features, .contentSection{
+
+    line-height: 0.63;
+    letter-spacing: -3px;
+}
+
+.section-Features{
+    margin-top: 150px;
+    font-size: 280px;
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+    color: #000000;
+}
+.contentSection {
+    margin-top: 0px;
+    background: #000000;
+    border-radius: 12px;
+    padding: 36px 30px;
+    box-shadow: 0 4px 22px rgba(251, 251, 251, 0.06);
+    /* Create the split layout */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-height: 1000px;
 }
 
 .about-text {
-    color: #444;
-    margin-top: 10px;
+    margin-top: 0px;
+    color: #0b0b0b;
+    font-size: 1.1rem;
+    line-height: 1.6;
 }
 
 .features-grid {
@@ -150,7 +214,7 @@ body {
 }
 
 .homePagePhoto img {
-    width: min(520px, 100%);
+    width: min(1200px, 100%);
     height: auto;
 }
 
@@ -159,21 +223,34 @@ body {
     border-radius: 16px;
     padding: 20px;
     background: #fbfbfb;
+    height: 300px;
+    width: auto;
 }
 
 .feature-card img {
-    height: 40px;
-    width: 40px;
+    height: 70px;
+    width: 70px;
     margin-bottom: 12px;
 }
 
 .feature-title {
     font-weight: 800;
-    margin-bottom: 6px;
+    margin-top: 45px;
+    letter-spacing: 0px;
+    font-size: 28px;
+
 }
 
 .feature-description {
     color: #555;
+    line-height: 18px;
+    letter-spacing: 1px;
+    margin-top: 45px;
+}
+
+.sectionWIT {
+    font-size: 48px;
+    margin-top: 150px;
 }
 
 .steps-container {
@@ -204,8 +281,8 @@ body {
 }
 
 .footer {
-    border-top: 1px solid #e5e5e5;
-    background: #ffffff;
+    border-top: 1px solid #090808;
+    background: #000000;
     padding: 34px 20px;
 }
 
@@ -218,19 +295,25 @@ body {
 }
 
 .footer-title {
-    font-size: 1.2rem;
+    font-size: 48px;
     font-weight: 800;
     margin-bottom: 10px;
+    color: #f3f3f3;
+    margin-left: 77px;
+    font-family: "Times New Roman", Times, serif;
+
+
 }
 
 .footer-description {
-    color: #555;
+    color: #f3f3f3;
 }
 
 .footer-heading {
     font-size: 1rem;
     font-weight: 800;
     margin-bottom: 10px;
+    color: #f3f3f3;
 }
 
 .footer-links {
@@ -241,7 +324,7 @@ body {
 
 .footer-links a {
     text-decoration: none;
-    color: #444;
+    color: #f3f3f3;
     font-weight: 600;
 }
 
@@ -249,14 +332,21 @@ body {
     text-decoration: underline;
 }
 
+.logoWhite{
+    height: 90px;
+    width: auto;
+    margin-left: 170px;
+}
+
 .footer-bottom {
     width: min(1100px, 100%);
     margin: 20px auto 0;
     padding-top: 18px;
     border-top: 1px solid #e5e5e5;
-    color: #666;
+    color: #f8f8f8;
     display: grid;
     gap: 6px;
+    text-align: center;
 }
 
 @media (max-width: 900px) {
@@ -270,5 +360,293 @@ body {
 
     .footer-content {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 14px 16px;
+    }
+
+    .navbar {
+        margin-right: 0;
+    }
+
+    .navbar ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .navbar a {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+
+    .container {
+        padding: 18px 14px 44px;
+    }
+
+    .logo {
+        height: 72px;
+        margin-top: 18px;
+    }
+
+    .landing-title {
+        font-size: 56px;
+    }
+
+    .landing-description {
+        font-size: 1rem;
+        padding: 0 6px;
+    }
+
+    .start-button {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .content-section {
+        margin-top: 64px;
+        flex-direction: column;
+        gap: 18px;
+        padding: 26px 18px;
+    }
+
+    .section-title {
+        font-size: 36px;
+    }
+
+    .sectionTitle {
+        font-size: 56px;
+    }
+
+    .section-Features {
+        margin-top: 90px;
+        font-size: 96px;
+    }
+
+    .contentSection {
+        flex-direction: column;
+        gap: 18px;
+        max-height: none;
+    }
+
+    .feature-card {
+        height: auto;
+        min-height: 220px;
+    }
+
+    .feature-card img {
+        height: 56px;
+        width: 56px;
+    }
+
+    .feature-title {
+        margin-top: 18px;
+        font-size: 24px;
+    }
+
+    .feature-description {
+        margin-top: 16px;
+        line-height: 1.4;
+    }
+
+    .sectionWIT {
+        margin-top: 90px;
+        font-size: 36px;
+        text-align: center;
+    }
+
+    .footer-title {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .logoWhite {
+        margin-left: 0;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .LogoName {
+        font-size: 18px;
+        margin-left: 0;
+    }
+
+    .landing-title {
+        font-size: 44px;
+    }
+
+    .landing-description {
+        font-size: 0.95rem;
+    }
+
+    .sectionTitle {
+        font-size: 46px;
+    }
+
+    .section-Features {
+        font-size: 72px;
+    }
+
+    .footer {
+        padding: 28px 16px;
+    }
+}
+
+@keyframes sc-fade-up {
+    0% {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes sc-slide-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes sc-button-shine {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes sc-pop {
+    0% {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.header {
+    animation: sc-slide-down 700ms ease-out both;
+}
+
+.logo {
+    animation: sc-fade-up 900ms ease-out both;
+    animation-delay: 80ms;
+    will-change: transform, opacity;
+}
+
+.landing-title {
+    animation: sc-fade-up 900ms ease-out both;
+    will-change: transform, opacity;
+}
+
+.landing-description {
+    animation: sc-fade-up 950ms ease-out both;
+    animation-delay: 90ms;
+    will-change: transform, opacity;
+}
+
+.start-button {
+    animation: sc-pop 900ms ease-out both;
+    animation-delay: 140ms;
+    background-size: 200% 200%;
+    animation-name: sc-pop, sc-button-shine;
+    animation-duration: 900ms, 4200ms;
+    animation-timing-function: ease-out, ease-in-out;
+    animation-delay: 140ms, 900ms;
+    animation-fill-mode: both, both;
+    animation-iteration-count: 1, infinite;
+    will-change: transform, opacity, background-position;
+}
+
+.content-section {
+    animation: sc-fade-up 800ms ease-out both;
+    animation-delay: 1200ms;
+}
+
+.features-grid .feature-card {
+    animation: sc-fade-up 800ms ease-out both;
+    will-change: transform, opacity;
+}
+
+.features-grid .feature-card:nth-child(2) {
+    animation-delay: 60ms;
+}
+
+.features-grid .feature-card:nth-child(3) {
+    animation-delay: 120ms;
+}
+
+.features-grid .feature-card:nth-child(4) {
+    animation-delay: 180ms;
+}
+
+.steps-container .step-card {
+    animation: sc-fade-up 800ms ease-out both;
+    will-change: transform, opacity;
+}
+
+.steps-container .step-card:nth-child(1) {
+    animation-delay: 60ms;
+}
+
+.steps-container .step-card:nth-child(2) {
+    animation-delay: 120ms;
+}
+
+.steps-container .step-card:nth-child(3) {
+    animation-delay: 180ms;
+}
+
+body {
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    mix-blend-mode: overlay;
+}
+
+.header,
+.container,
+.footer {
+    position: relative;
+    z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
     }
 }

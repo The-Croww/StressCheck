@@ -12,9 +12,9 @@
 <body>
      <!-- Header with Navbar -->
     <header class="header">
-        <div class="logo-container">
-            <img src="image/Group 1.svg" alt="StressCheck Logo" class="logo">
-        </div>
+        <nav class="LogoName">
+            <h1 class="LogoName"><i>StressCheck.</i></h1>
+        </nav>
         <nav class="navbar">
             <ul>
                 <li><a href="#landingPage">Home</a></li>
@@ -25,52 +25,53 @@
         </nav>
     </header>
 
-    <div class="container">
+    <p id="landingPage"></p>
+    <div class="container" >
         <!-- Landing Page -->
-        <div class="landing-page" id="landingPage">
+        <div class="landing-page" >
             <div class="landing-content">
-                <h1 class="landing-title">StressCheck: Discover Your Current Stress Level</h1>
+                <img src="image/Logo.svg" alt="StressCheck Logo" class="logo">
+                <h1 class="landing-title"><i>StressCheck.</i></h1>
                 <p class="landing-description">
-                    Take a quick, psychology-inspired quiz to understand your stress levels. 
-                    Choose the emoji that best reflects how you feel — your results might surprise you.
-                </p>
-               <a href="who.html"><button class="start-button" id="startButton">Start Quiz</button></a>
+                    <b>Understand your stress in under a minute.</b> <br>
+                    This psychology-inspired emoji quiz turns your feelings into real insights. <br>
+                    Pick an emoji, get instant results, and see what your stress level says about you.
+                </p><br>
+               <a href="who.html"><button class="start-button" id="startButton">Get Started ↗</button></a>
+              
             </div>
+             
         </div>
 <!-- About Section -->
-        <div class="content-section" id="about">
+        <p id="about"></p>
+        <div class="content-section" >
+            
             <div class="section-content">
-                <h1 class="section-title">About StressCheck</h1>
+                <h2 class="section-title">about</h2>
+                <h1 class="sectionTitle"><i>StressCheck.</i></h1>
                 <div class="about-content">
                     <p class="about-text">
                         StressCheck is a psychology-inspired self-assessment tool designed to help you understand your current stress levels. 
                         Our quiz uses validated psychological principles to provide meaningful insights into your emotional and physical well-being.
-                    </p>
-                    <h3 class="subsection-title">Our Mission</h3>
-                    <p class="about-text">
                         We believe that self-awareness is the first step toward better mental health. By providing a simple, 
                         accessible tool for stress assessment, we aim to empower individuals to recognize their stress patterns 
-                        and take proactive steps toward wellness.
-                    </p>
-                    <h3 class="subsection-title">How It Works</h3>
-                    <p class="about-text">
-                        Our assessment evaluates both physical and emotional indicators of stress through a series of carefully 
+                        and take proactive steps toward wellness. <br><br> Our assessment evaluates both physical and emotional indicators of stress through a series of carefully 
                         crafted questions. You'll respond using emoji reactions that reflect your current state, making the 
-                        process intuitive and engaging.
-                    </p>
-                    <h3 class="subsection-title">Disclaimer</h3>
-                    <p class="about-text disclaimer-text">
-                        StressCheck is an informational tool and is not a substitute for professional medical advice, diagnosis, 
+                        process intuitive and engaging. Our assessment evaluates both physical and emotional indicators of stress through a series of carefully 
+                        crafted questions. You'll respond using emoji reactions that reflect your current state, making the 
+                        process intuitive and engaging. <br> <br>StressCheck is an informational tool and is not a substitute for professional medical advice, diagnosis, 
                         or treatment. If you're experiencing persistent stress or mental health concerns, please consult with a 
                         qualified healthcare professional.
                     </p>
                 </div>
             </div>
+            
         </div>
 <!-- Features Section -->
-        <div class="content-section" id="features">
+        <p  id="features"></p>
+        <h1 class="section-Features"><i>Features.</i></h1>
+        <div class="contentSection">
             <div class="section-content">
-                <h1 class="section-title">Features</h1>
                 <div class="features-grid">
                     <div class = "homePagePhoto">
                         <img src="image/Group 2.svg" alt="homePagePhoto">
@@ -83,14 +84,14 @@
                         </p>
                     </div>
                     <div class="feature-card">
-                        <img src="image/icon2.svg" alt="icon1">
+                        <img src="image/icon 3.svg" alt="icon1">
                         <h3 class="feature-title">Private & Secure</h3>
                         <p class="feature-description">
                             Your responses are processed locally in your browser. No data is collected or stored.
                         </p>
                     </div>
                     <div class="feature-card">
-                        <img src="image/icon 3.svg" alt="icon1">
+                        <img src="image/icon2.svg" alt="icon1">
                         <h3 class="feature-title">Mobile Friendly</h3>
                         <p class="feature-description">
                             Access StressCheck from any device - desktop, tablet, or mobile - with a responsive design.
@@ -100,7 +101,7 @@
             </div>
         </div>
 
-        <h2 class="section-title" id="howItWorks">How It Works</h2>
+        <h2 class="sectionWIT" id="howItWorks">How It Works?</h2>
   
   <div class="steps-container">
     <div class="step-card">
@@ -128,8 +129,8 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <h3 class="footer-title">StressCheck</h3>
-                <p class="footer-description">A simple tool to help you understand your stress levels through psychology-inspired assessments.</p>
+                <img src="image/Logo2.svg" alt="Logo White" class ="logoWhite">
+                <h3 class="footer-title"><i>StressCheck.</i></h3>
             </div>
             <div class="footer-section">
                 <h4 class="footer-heading">Quick Links</h4>
@@ -150,9 +151,12 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 StressCheck. All rights reserved.</p>
+            <p>© <span id="year">2024</span> StressCheck. All rights reserved.</p>
             <p class="footer-disclaimer">This tool is for informational purposes only and is not a substitute for professional medical advice.</p>
         </div>
     </footer>
+    <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
