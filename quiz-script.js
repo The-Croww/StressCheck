@@ -1,4 +1,3 @@
-
 const emojiOptions = [
     { emoji: "😌", label: "Very Calm", value: 0 },
     { emoji: "🙂", label: "Stable", value: 25 },
@@ -7,7 +6,7 @@ const emojiOptions = [
     { emoji: "😫", label: "Exhausted", value: 100 }
 ];
 
-const QUESTION_COUNT = 10;
+const QUESTION_COUNT = 20;
 
 let questions = [];
 let currentQuestionIndex = 0;
