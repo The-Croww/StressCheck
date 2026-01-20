@@ -1,3 +1,4 @@
+
 const emojiOptions = [
     { emoji: "😌", label: "Very Calm", value: 0 },
     { emoji: "🙂", label: "Stable", value: 25 },
@@ -152,6 +153,54 @@ function updateProgress() {
     if (progressText) progressText.textContent = `Question ${Math.min(currentQuestionIndex + 1, total)} of ${total}`;
 }
 
+function drawDonutChart(averageStress, emojiBreakdown) {
+    const canvas = document.getElementById('stressChart');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const radius = 85;
+    const innerRadius = 55;
+    
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Define colors for each stress level
+    const colors = {
+        0: '#4ade80',   // Green for Very Calm
+        25: '#86efac',  // Light Green for Stable
+        50: '#fbbf24',  // Yellow for Neutral
+        75: '#fb923c',  // Orange for Anxious
+        100: '#f87171'  // Red for Exhausted
+    };
+    
+    // Calculate angles for each segment
+    let currentAngle = -Math.PI / 2; // Start from top
+    
+    emojiBreakdown.forEach(item => {
+        if (item.percentage > 0) {
+            const sliceAngle = (item.percentage / 100) * 2 * Math.PI;
+            
+            // Draw outer arc
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, currentAngle, currentAngle + sliceAngle);
+            ctx.arc(centerX, centerY, innerRadius, currentAngle + sliceAngle, currentAngle, true);
+            ctx.closePath();
+            ctx.fillStyle = colors[item.value];
+            ctx.fill();
+            
+            currentAngle += sliceAngle;
+        }
+    });
+    
+    // Update center text
+    const chartPercentage = document.getElementById('chartPercentage');
+    if (chartPercentage) {
+        chartPercentage.textContent = `${averageStress}%`;
+    }
+}
+
 function showResults() {
     const quizSection = document.getElementById('quizSection');
     if (quizSection) {
@@ -234,14 +283,15 @@ function showResults() {
     }
 
     const resultContainer = document.getElementById('resultContainer');
-    const stressPercentage = document.getElementById('stressPercentage');
     const stressMessage = document.getElementById('stressMessage');
     const resultCard = resultContainer ? resultContainer.querySelector('.result-card') : null;
 
     const resultHeader = resultCard ? resultCard.querySelector('.result-header') : null;
     if (resultHeader) resultHeader.textContent = `Your Stress Summary - ${categoryTitle}`;
 
-    if (stressPercentage) stressPercentage.textContent = `${averageStress}%`;
+    // Draw the donut chart
+    drawDonutChart(averageStress, emojiBreakdown);
+    
     if (stressMessage) stressMessage.innerHTML = `<strong>${interpretation}</strong><br>${message}`;
 
     if (resultCard) {
@@ -282,6 +332,7 @@ function showResults() {
             barFill.className = 'breakdown-bar-fill';
             barFill.style.width = `${item.percentage}%`;
 
+            // Colors matching the donut chart
             if (item.value === 0) {
                 barFill.style.background = '#4ade80';
             } else if (item.value === 25) {
@@ -292,6 +343,21 @@ function showResults() {
                 barFill.style.background = '#fb923c';
             } else {
                 barFill.style.background = '#f87171';
+            }
+
+            // Add color indicator dot
+            const colorDot = document.createElement('div');
+            colorDot.className = 'breakdown-color-dot';
+            if (item.value === 0) {
+                colorDot.style.background = '#4ade80';
+            } else if (item.value === 25) {
+                colorDot.style.background = '#86efac';
+            } else if (item.value === 50) {
+                colorDot.style.background = '#fbbf24';
+            } else if (item.value === 75) {
+                colorDot.style.background = '#fb923c';
+            } else {
+                colorDot.style.background = '#f87171';
             }
 
             const barBackground = document.createElement('div');
@@ -305,6 +371,7 @@ function showResults() {
             percentageDisplay.textContent = `${item.percentage}%`;
 
             breakdownItem.appendChild(emojiLabelContainer);
+            breakdownItem.appendChild(colorDot);
             breakdownItem.appendChild(barContainer);
             breakdownItem.appendChild(percentageDisplay);
             breakdownList.appendChild(breakdownItem);
@@ -355,3 +422,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const retryButton = document.getElementById('retryButton');
     if (retryButton) retryButton.addEventListener('click', initQuiz);
 });
+
+
+
+

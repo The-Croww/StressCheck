@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <div class="quiz-header">
-            <a class="back-link" href="who.html">Change category</a>
+            <a class="back-link" href="who.html">Return to Category</a>
             <div class="quiz-title" id="quizTitle">StressCheck Quiz</div>
         </div>
 
@@ -30,7 +30,13 @@
         <div class="result-container" id="resultContainer">
             <div class="result-card">
                 <h2 class="result-header">Your Stress Summary</h2>
-                <div class="stress-percentage" id="stressPercentage">0%</div>
+                <div class="chart-container">
+                    <canvas id="stressChart" width="220" height="220"></canvas>
+                    <div class="chart-center-text">
+                        <div class="chart-percentage" id="chartPercentage">0%</div>
+                        <div class="chart-label">Stress Level</div>
+                    </div>
+                </div>
                 <div class="stress-message" id="stressMessage"></div>
                 <button class="retry-button" id="retryButton">Retake Quiz</button>
             </div>
