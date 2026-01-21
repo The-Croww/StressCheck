@@ -4,36 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StressCheck</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="who-style.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Landing Page -->
-        <div class="landing-page" id="landingPage">
-            <div class="landing-content">
-                <h1 class="landing-title">Who are you?</h1>
-                <div class="button-stack">
-                    <button class="start-button" type="button" data-category="student">
-                        <img class="btn-icon" src="image/Icon 5.svg" alt="">
-                        <span class="btn-label">Student</span>
-                    </button>
-                    <button class="start-button" type="button" data-category="adult">
-                        <img class="btn-icon" src="image/Icon 4.svg" alt="">
-                        <span class="btn-label">Adult</span>
-                    </button>
-                    <button class="start-button" type="button" data-category="general">
-                        <img class="btn-icon" src="image/Icon3.svg" alt="">
-                        <span class="btn-label">Rather Not to Say</span>
-                    </button>
-                </div>
-                <a class="back-home" href="index.html">Back to Home</a>
-            </div>
-        </div>
-    </div>
+<div class="container">
 
-    <script src="who-script.js"></script>
+    <!-- STEP 1: USER TYPE -->
+<div class="landing-page" id="stepUser">
+    <div class="landing-content">
+        <h1 class="landing-title">Who are you?</h1>
+        <div class="button-stack">
+            <button class="start-button" data-category="student"><img src="image/Icon 5.svg" alt="Student" class ="Picture">Student</button>
+            <button class="start-button" data-category="adult"><img src="image/Icon 4.svg" alt="Adult" class="Picture">Adult</button>
+            <button class="start-button" data-category="general"><img src="image/Icon3.svg" alt="RNtS" class="Picture">Rather Not to Say</button>
+        </div>
+        <a class="back-home" href="index.html">Back to Home</a>
+    </div>
+</div>
+
+<!-- STEP 3A: STUDENT CATEGORIES -->
+<div class="landing-page hidden" id="stepStudent">
+    <div class="landing-content">
+        <h1 class="landing-title">What is stressing you as a student?</h1>
+        <div class="button-stack">
+            <button class="start-button" data-category="education">Education</button>
+            <button class="start-button" data-category="social">Social Life</button>
+            <button class="start-button" data-category="financial">Financial</button>
+            <button class="start-button" data-category="family">Family</button>
+        </div>
+        <a class="back-home" onclick="goBack()">Go Back</a>
+    </div>
+</div>  
+
+<!-- STEP 3B: ADULT CATEGORIES -->
+<div class="landing-page hidden" id="stepAdult">
+    <div class="landing-content">
+        <h1 class="landing-title">What is stressing you as an adult?</h1>
+        <div class="button-stack">
+            <button class="start-button" data-category="work">Work</button>
+            <button class="start-button" data-category="career">Career</button>
+            <button class="start-button" data-category="financial">Financial</button>
+            <button class="start-button" data-category="relationships">Relationships</button>
+        </div>
+        <a class="back-home" onclick="goBack()">Go Back</a>
+    </div>
+</div>
+
+<!-- STEP 3C: GENERAL CATEGORIES -->
+<div class="landing-page hidden" id="stepGeneral">
+    <div class="landing-content">
+        <h1 class="landing-title">What is stressing you right now?</h1>
+        <div class="button-stack">
+            <button class="start-button" data-category="emotional">Emotional</button>
+            <button class="start-button" data-category="mental">Mental</button>
+            <button class="start-button" data-category="life">Life in General</button>
+        </div>
+        <a class="back-home" onclick="goBack()">Go Back</a>
+    </div>
+</div>
+
+    <!-- ✅ BACK TO HOME (ALWAYS VISIBLE) -->
+
+</div>
+
+<script src="who-script.js"></script>
 </body>
 </html>

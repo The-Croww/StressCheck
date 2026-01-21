@@ -19,20 +19,37 @@ body {
     background-position: center;
     background-repeat: no-repeat;
 
-    /* font-family: "Times New Roman", Times, serif;
-    font-family: 'Montserrat', sans-serif; */
+}
 
+/* Emoji double-tap fix */
+.emoji, .breakdown-emoji {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .container {
-    width: 100%;
-    max-width: 600px;
+    width: 500px;
+    height: 300px;
+    max-width: 500px;
+    max-height: 300px;
     margin: 0 auto;
+    padding: 24px 16px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hidden {
+    display: none !important;
 }
 
 .landing-page {
-    width: 100%;
-    display: flex;
     justify-content: center;
     align-items: center;
     min-height: 60vh;
@@ -41,8 +58,7 @@ body {
 .landing-content {
     text-align: center;
     padding: 40px 30px;
-    max-width: 520px;
-    background: #ffffff;
+    background: linear-gradient(190deg, #f9f9f9, #54545484, #3939394e);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     font-family: 'Montserrat', sans-serif;
     border-radius: 12px;
@@ -55,6 +71,8 @@ body {
     margin-bottom: 26px;
     line-height: 1.3;
     text-align: center;
+    font-family: 'Montserrat', sans-serif;
+
 }
 
 .button-stack {
@@ -83,6 +101,11 @@ body {
     min-height: 56px;
     flex: 1;
     min-width: 140px;
+}
+
+.Picture{
+    height: 20px;
+    width: auto;
 }
 
 .btn-icon {

@@ -36,6 +36,12 @@ function getCategoryKey() {
     return 'general';
 }
 
+function getSubcategoryKey() {
+    const raw = (localStorage.getItem('stresscheckSubcategory') || '').toLowerCase();
+    const valid = ['education','social','financial','family','work','career','relationships','emotional','mental','life'];
+    return valid.includes(raw) ? raw : 'general';
+}
+
 function updateTitle() {
     const quizTitle = document.getElementById('quizTitle');
     const key = getCategoryKey();
@@ -46,10 +52,39 @@ function updateTitle() {
     else quizTitle.textContent = 'StressCheck';
 }
 
+function getCategoryKey() {
+    return localStorage.getItem('stresscheckUserType') || 'general';
+}
+
+function getSubcategoryKey() {
+    return localStorage.getItem('stresscheckSubcategory') || null;
+}
+
 function initQuiz() {
-    const key = getCategoryKey();
+    const categoryKey = getCategoryKey();
+    const subcategoryKey = getSubcategoryKey();
     const sets = window.stressCheckQuestionSets || {};
-    const selectedSet = sets[key] || sets.general || [];
+    
+    let selectedSet = [];
+    
+    // Direct mapping: category.subcategory
+    if (sets[categoryKey] && sets[categoryKey][subcategoryKey]) {
+        selectedSet = sets[categoryKey][subcategoryKey];
+    }
+    // Fallback: use first available subcategory in that category
+    else if (sets[categoryKey]) {
+        const availableSubcategories = Object.keys(sets[categoryKey]);
+        if (availableSubcategories.length > 0) {
+            selectedSet = sets[categoryKey][availableSubcategories[0]];
+        }
+    }
+    // Final fallback: use first available general subcategory
+    else if (sets.general) {
+        const generalSubcategories = Object.keys(sets.general);
+        if (generalSubcategories.length > 0) {
+            selectedSet = sets.general[generalSubcategories[0]];
+        }
+    }
 
     questions = pickQuestions(selectedSet, QUESTION_COUNT);
     currentQuestionIndex = 0;
@@ -199,6 +234,7 @@ function drawDonutChart(averageStress, emojiBreakdown) {
         chartPercentage.textContent = `${averageStress}%`;
     }
 }
+
 
 function showResults() {
     const quizSection = document.getElementById('quizSection');
