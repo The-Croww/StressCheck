@@ -50,14 +50,22 @@ body {
     padding: 10px 12px;
     border-radius: 12px;
     background: #f0f0f0;
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease;
     position: sticky;
     top: 20px;
     z-index: 100;
 }
 
-.back-link:hover {
-    background: #e5e5e5;
+.back-link:hover,
+.back-link:focus,
+.back-link.active {
+    background: #e6e6e6;
+    transform: translateY(-1px);
+}
+
+.back-link:active {
+    background: #d9d9d9;
+    transform: translateY(0);
 }
 
 .quiz-title {

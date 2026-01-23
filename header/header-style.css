@@ -149,9 +149,16 @@
     color: #1a1a1a;
     font-weight: 600;
     font-size: 0.95rem;
-    transition: color 0.2s ease;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
 }
 
-.navbar a:hover {
-    color: #333;
+.navbar a:hover,
+.navbar a:focus,
+.navbar a.active {
+    background: #e6e6e6;
+    color: #1a1a1a;
+    transform: translateY(-1px);
 }
+
